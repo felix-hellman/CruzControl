@@ -8,12 +8,9 @@
 #include "web.h"
 #include "utility.h"
 
-
-
 int main()
 {
 	daemonize();
-
 	std::string result = "", lastTweet = "";
 	std::string target = "https://twitter.com/tedcruz";
 	std::string search = "hashtag_click";
