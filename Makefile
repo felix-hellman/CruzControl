@@ -1,5 +1,5 @@
 all:
 	clang++ -std=c++14 web.cpp  -c
-	clang++ -std=c++14 executer.cpp -c
-	clang++ -std=c++14 main.cpp -o main web.o executer.o -lcurl
-	rm web.o executer.o
+	clang++ -std=c++14 utility.cpp -c
+	clang++ -std=c++14 CruzControl.cpp -o Cruz web.o utility.o -lcurl
+	rm web.o utility.o

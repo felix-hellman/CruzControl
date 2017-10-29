@@ -1,8 +1,11 @@
-#ifndef EXECUTER_H
-#define EXECUTER_H
+#ifndef UTILITY_H
+#define UTILITY_H
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <vector>
 #include <string>
 
@@ -12,14 +15,8 @@ const std::string command_eject = "eject";
 const std::string command_rick0 = "xdg-open";
 const std::string command_rick1 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
-class Executer
-{
-public:
-  Executer();
-  ~Executer();
-  void execute(const std::string &command);
-};
-
-
+void execute(const std::string &command);
+void daemonize();
+std::string commandMap(int input);
 
 #endif

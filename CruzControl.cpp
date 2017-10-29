@@ -1,29 +1,39 @@
 #include <iostream>
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <limits.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "web.h"
-#include "executer.h"
+#include "utility.h"
+
+
 
 int main()
 {
-	for(int i = 0; i < 1024; i++)
-		close(i);
-	/*open("/dev/null",O_RWDR);
-	dup(0);
-	dup(0);*/
+	daemonize();
 
 	std::string result = "", lastTweet = "";
 	std::string target = "https://twitter.com/tedcruz";
-	Executer ex;
+	std::string search = "hashtag_click";
 	while(1)
 	{
+		int count = 0;
 		checkStatus(result,target);
+
+		auto found = result.find(search,0);
+		while(found != std::string::npos)
+		{
+			found = result.find(search,found+1);
+			count++;
+		}
+
 		if(lastTweet == "") //First time init
 			lastTweet = result;
 		if(lastTweet != result)
 		{
-			std::cout << result << std::endl;
-			ex.execute("screen");
+			execute(commandMap(count));
 		}
 		sleep(60);
 		lastTweet = result;
