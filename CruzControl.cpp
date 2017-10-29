@@ -5,20 +5,20 @@
 #include <limits.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
 #include "web.h"
 #include "utility.h"
+
 
 int main()
 {
 	daemonize();
 	std::string result = "", lastTweet = "";
-	std::string target = "https://twitter.com/tedcruz";
 	std::string search = "hashtag_click";
 	while(1)
 	{
 		int count = 0;
-		checkStatus(result,target);
-
+		checkStatus(result,getHandle());
 		auto found = result.find(search,0);
 		while(found != std::string::npos)
 		{

