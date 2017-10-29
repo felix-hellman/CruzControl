@@ -46,14 +46,13 @@ void checkStatus(std::string &result, const std::string &target)
 
 		unsigned int first = buffer.find(start);
 		unsigned int last = buffer.find(stop,first);
-		//first = buffer.find(start,last);
-		//last = buffer.find(stop,first); //Because we want to skip pinned tweet
+		first = buffer.find(start,last);
+		last = buffer.find(stop,first); //Because we want to skip pinned tweet
 		result = buffer.substr(first,last-first);
-		
+
 		curl_easy_cleanup(curl);
 		curl_global_cleanup();
 	}
 
 	curl_global_cleanup();
 }
-
