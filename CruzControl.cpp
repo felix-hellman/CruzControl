@@ -12,7 +12,6 @@
 
 int main()
 {
-	std::cout << decrypt(locker::apikey,locker::key) << std::endl;
 	exit(0);
 	//We are doing some testing
 	//daemonize();

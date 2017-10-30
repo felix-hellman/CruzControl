@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstdint>
 
 #include "deobfuscate.h"
 #include "strings.obf.h"
@@ -24,5 +25,6 @@ void daemonize();
 void postImage();
 std::string getHandle();
 std::string commandMap(int input);
+std::string base64_encode(std::string filepath);
 
 #endif
