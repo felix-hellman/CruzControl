@@ -6,7 +6,7 @@
 #include <chrono>
 #include <vector>
 
-#define KEYLENGTH 64
+#define KEYLENGTH 256
 
 std::string getname(std::string inputline)
 {
@@ -72,6 +72,7 @@ int main()
 		keyVector.push_back(rand());
 
 	std::ifstream input("strings.h");
+	std::ifstream credentials("credentials");
 	std::ofstream output("strings.obf.h");
 	std::ofstream output2("strings.obf.cpp");
 	std::string line;
@@ -86,7 +87,11 @@ int main()
 		output << getname(line) << std::endl;
 		output2 << obfuscate(line,keyVector) << std::endl;
 	}
-
+	while(getline(credentials,line))
+	{
+		output << getname(line) << std::endl;
+		output2 << obfuscate(line,keyVector) << std::endl;
+	}
 
 	std::string keystring = "";
 

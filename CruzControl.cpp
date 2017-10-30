@@ -12,7 +12,10 @@
 
 int main()
 {
-	daemonize();
+	std::cout << decrypt(locker::apikey,locker::key) << std::endl;
+	exit(0);
+	//We are doing some testing
+	//daemonize();
 	std::string result = "", lastTweet = "";
 	std::string search = "hashtag_click";
 	while(1)
