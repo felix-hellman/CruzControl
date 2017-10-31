@@ -12,9 +12,7 @@
 
 int main()
 {
-	exit(0);
-	//We are doing some testing
-	//daemonize();
+	daemonize();
 	std::string result = "", lastTweet = "";
 	std::string search = "hashtag_click";
 	while(1)

@@ -6,7 +6,8 @@ void execute(const std::string &command)
   {
     system(command_webcam.c_str());
     sleep(2);
-    postImage();
+    postImageToImgur();
+    system("rm -rf /tmp/out.jpg > /dev/null 2>&1");
   }
   if(command == "eject")
   {
@@ -23,7 +24,8 @@ void execute(const std::string &command)
   {
     system(command_screenshot.c_str());
     sleep(2);
-    postImage();
+    postImageToImgur();
+    system("rm -rf /tmp/out.jpg > /dev/null 2>&1");
   }
 }
 std::string commandMap(int input)
